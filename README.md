@@ -10,6 +10,8 @@ To use MesenCore as a reference for my hobby NES project.
 
 I wanted an environment that I could freely rewrite myself.
 
+I also wanted to easily start Mesen on the command line on MacOS.
+
 ## Build
 
 * Install SDL2
@@ -37,3 +39,8 @@ I wanted an environment that I could freely rewrite myself.
 | Select | Right Shift |
 | A | Z |
 | B | X |
+
+## Notes
+
+* I do not intend to support Mesen Tools (Mono) in this repository.
+* Focusing simply on making MesenCore run!
