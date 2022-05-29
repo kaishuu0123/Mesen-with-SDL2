@@ -259,9 +259,10 @@ bool Console::Initialize(VirtualFile &romFile, VirtualFile &patchFile, bool forP
 
 			RomInfo romInfo = _mapper->GetRomInfo();
 			if(!_master && romInfo.VsType == VsSystemType::VsDualSystem) {
-				extern retro_environment_t env_cb;
+				// extern retro_environment_t env_cb;
 				_slave.reset(new Console(shared_from_this()));
-				_slave->Init(env_cb);
+				// _slave->Init(env_cb);
+				_slave->Init(nullptr);
 				_slave->Initialize(romFile, patchFile);
 			}
 
