@@ -4,6 +4,7 @@
 #include "../Utilities/LowPassFilter.h"
 #include "../Utilities/blip_buf.h"
 #include "../Libretro/libretro.h"
+#include "IAudioDevice.h"
 #include "Snapshotable.h"
 #include "StereoPanningFilter.h"
 #include "StereoDelayFilter.h"
@@ -29,6 +30,8 @@ private:
 	static constexpr uint32_t MaxSampleRate = 96000;
 	static constexpr uint32_t MaxSamplesPerFrame = MaxSampleRate / 60 * 4 * 2; //x4 to allow CPU overclocking up to 10x, x2 for panning stereo
 	static constexpr uint32_t MaxChannelCount = 11;
+
+	IAudioDevice* _audioDevice;
 
 	retro_audio_sample_batch_t _sendAudioSample = nullptr;
 	vector<int16_t> _audioSampleBuffer;
@@ -101,6 +104,7 @@ public:
 	void StartRecording(string filepath);
 	void StopRecording();
 	bool IsRecording();
+	void RegisterAudioDevice(IAudioDevice *audioDevice);
 
 	//For NSF/NSFe
 	uint32_t GetMuteFrameCount();

@@ -86,6 +86,11 @@ void SoundMixer::Reset()
 	_previousTargetRate = _sampleRate;
 }
 
+void SoundMixer::RegisterAudioDevice(IAudioDevice *audioDevice)
+{
+	_audioDevice = audioDevice;
+}
+
 void SoundMixer::PlayAudioBuffer(uint32_t time)
 {
 	UpdateTargetSampleRate();
@@ -135,6 +140,10 @@ void SoundMixer::PlayAudioBuffer(uint32_t time)
 
 	if(filterSettings.CrossFadeRatio > 0) {
 		_crossFeedFilter.ApplyFilter(_outputBuffer, sampleCount, filterSettings.CrossFadeRatio);
+	}
+
+	if(_audioDevice) {
+		_audioDevice->PlayBuffer(_outputBuffer, (uint32_t)sampleCount, _sampleRate, true);
 	}
 
 	if(!_skipMode) {

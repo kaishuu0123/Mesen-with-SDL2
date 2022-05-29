@@ -450,6 +450,7 @@ private:
 	uint64_t _flags = 0;
 	
 	bool _audioSettingsChanged = false;
+	uint32_t _audioLatency = 50;
 	double _channelVolume[11] = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 	double _channelPanning[11] = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 	EqualizerFilterType _equalizerFilterType = EqualizerFilterType::None;
@@ -800,6 +801,11 @@ public:
 	double GetChannelPanning(AudioChannel channel)
 	{
 		return _channelPanning[(int)channel];
+	}
+
+	uint32_t GetAudioLatency()
+	{
+		return _audioLatency;
 	}
 
 	void SetVideoFilterType(VideoFilterType videoFilterType)
