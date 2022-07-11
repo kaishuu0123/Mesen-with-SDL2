@@ -225,8 +225,8 @@ int main(int argc, char *argv[]) {
 		SDL_RenderPresent(renderer);
 
 		float elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
-		// Cap to 60 FPS
-		SDL_Delay(floor(16.666f - elapsedMS));
+		// Cap to 60 FPS (disable cap)
+		// SDL_Delay(floor(16.666f - elapsedMS));
 	}
 
 	_console->SaveBatteries();
